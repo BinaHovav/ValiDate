@@ -1,4 +1,3 @@
-// config/db.ts
 import mongoose from 'mongoose';
 
 const url = 'mongodb+srv://binahovav:Gilad2022@cluster0.2e6czzb.mongodb.net/validate_db';

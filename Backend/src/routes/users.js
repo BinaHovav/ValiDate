@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.router = void 0;
 const express_1 = __importDefault(require("express"));
-const item_1 = require("../models/item");
+const item_1 = require("../models/user");
 const router = express_1.default.Router();
 exports.router = router;
 router.post('/addItem', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
