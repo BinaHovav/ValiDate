@@ -2,8 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.generateIdealPartner = void 0;
 const openai_1 = require("openai");
+require('dotenv').config();
 const openai = new openai_1.OpenAI({
-    apiKey: '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',
+    apiKey: process.env.OPENAI_API_KEY,
     dangerouslyAllowBrowser: true,
 });
 async function generateIdealPartner(bio) {
@@ -15,9 +16,9 @@ async function generateIdealPartner(bio) {
                 { role: 'user', content: 'Here is my bio: ' + bio },
                 {
                     role: 'assistant',
-                    content: `According to the bio provided, please write a brief description of an ideal match in 2-3 sentences.
-                    Also, using short titles, list 3 or 4 places where the user might find a match
-                    (e.g., Local Library, Beach, etc.)`,
+                    content: `According to the bio provided, please write a brief description of an ideal match in 2 sentences.
+                    Also, write "Here are places you may find him:" and then please provide a numbered list from 1 to 4 of places where the user might find a match
+                    (e.g., Local Library, Beach, etc.), without a description of the place`,
                 },
             ],
             model: 'gpt-3.5-turbo',

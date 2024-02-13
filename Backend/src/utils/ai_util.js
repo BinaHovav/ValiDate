@@ -1,9 +1,10 @@
 'use strict';
 Object.defineProperty(exports, '__esModule', { value: true });
 exports.generateIdealPartner = void 0;
+
 const openai_1 = require('openai');
 const openai = new openai_1.OpenAI({
-  apiKey: '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',
+  apiKey: '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',
   dangerouslyAllowBrowser: true,
 });
 async function generateIdealPartner(bio) {

@@ -55,7 +55,7 @@ export default function TabLayout() {
           // ),
         }}
       />
-      <Tabs.Screen
+      {/* <Tabs.Screen
         name="two"
         options={{
           title: 'Tab Two',
@@ -63,7 +63,7 @@ export default function TabLayout() {
             <TabBarIcon name="code" color={color} />
           ),
         }}
-      />
+      /> */}
     </Tabs>
   );
 }

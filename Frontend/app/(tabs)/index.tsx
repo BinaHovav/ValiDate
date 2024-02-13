@@ -5,7 +5,6 @@ import {
   TextInput,
   Button,
   KeyboardAvoidingView,
-  Modal,
   Platform,
   ScrollView,
   Image,
@@ -13,24 +12,24 @@ import {
 import styles from './styles';
 import httpService from '../../services/httpService';
 import Spinner from 'react-native-loading-spinner-overlay/lib';
+import AppModal from './modal';
 
 export default function WelcomePage() {
   const [email, setEmail] = useState('');
   const [bio, setBio] = useState('');
-  // const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [idealPartnerResponse, setIdealPartnerResponse] = useState<
-    string[] | string
-  >('');
+  const [idealPartnerResponse, setIdealPartnerResponse] = useState<string[] | string>('');
 
-  const addUser = async () => {
+  const MIN_NUM_OF_CHARACTERS = 40;
+
+  const addUserAndGenerateMatch = async () => {
     try {
-      // Check if the bio meets the minimum length requirement
-      // if (bio.length < 40) {
-      //   setErrorMessage('Bio must be at least 40 characters long');
-      //   return; // Stop execution if the bio is too short
-      // }
+      if (bio.length < MIN_NUM_OF_CHARACTERS) {
+        setErrorMessage('Bio must be at least ' + MIN_NUM_OF_CHARACTERS + ' characters long');
+        return;
+      }
 
       setIsLoading(true);
 
@@ -39,24 +38,19 @@ export default function WelcomePage() {
         bio: bio,
       };
 
-      const response: any = await httpService.post(
-        '/users/add-user',
-        userData
-      );
+      const response: any = await httpService.post('/users/add-user', userData);
 
       const idealProfile: string = response.idealProfile;
       const matchedPartners: string[] = response.matchedPartners;
-
       setIdealPartnerResponse(
         matchedPartners.length > 0
-          ? 'Yay! We found a match that suits your description\n' +
-              'You may contact him through his email: \n' +
-              matchedPartners
-          : "Unfortunately we couldn't find a match for you on our app, but here is an idea for you: " +
-              idealProfile
+          ? `Yay! We found a match that suits your description\nYou may contact them through their email:\n${matchedPartners.join(
+              '\n'
+            )}\n\n\n We also suggest for you the kind of partner you're looking for:\n${idealProfile}`
+          : `Unfortunately, we couldn't find a match for you on our app, but here is an idea for an ideal match for you: ${idealProfile}`
       );
-      setIsModalVisible(true);
 
+      setIsModalVisible(true);
       setEmail('');
       setBio('');
     } catch (error) {
@@ -69,7 +63,7 @@ export default function WelcomePage() {
   };
 
   return (
-    <ScrollView style={styles.scrollView}>
+    <ScrollView>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'android' ? 'height' : 'padding'}
         style={styles.container}
@@ -80,7 +74,6 @@ export default function WelcomePage() {
             style={styles.logo}
             resizeMode="contain"
           />
-          {/* <View> */}
           <Text style={styles.title}>Hello new member</Text>
           <Text style={styles.label}>Username</Text>
           <TextInput
@@ -98,11 +91,12 @@ export default function WelcomePage() {
           />
           <Button
             title="Find me a match!"
-            color="#F8C5C8"
+            color="blue"
             onPress={() => {
-              addUser();
+              addUserAndGenerateMatch();
             }}
           />
+          <Text style={styles.error}>{errorMessage} </Text>
           <Spinner
             visible={isLoading}
             textContent={'Finding you a match...'}
@@ -111,21 +105,12 @@ export default function WelcomePage() {
           />
         </View>
         <View style={styles.modalContainer}>
-          <ScrollView style={styles.scrollView}>
-            <Modal
-              visible={isModalVisible}
-              animationType="fade"
-              // transparent={true}
-              onRequestClose={closeModal}
-            >
-              <View style={styles.modalContainer}>
-                <Text style={styles.modalContent}>
-                  {idealPartnerResponse}
-                </Text>
-                <Button title="Close" onPress={closeModal} />
-                {/* </View> */}
-              </View>
-            </Modal>
+          <ScrollView>
+            <AppModal
+              closeModal={closeModal}
+              isModalVisible={isModalVisible}
+              idealPartnerResponse={idealPartnerResponse}
+            />
           </ScrollView>
         </View>
       </KeyboardAvoidingView>

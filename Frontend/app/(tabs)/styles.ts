@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
   },
   form: {
     backgroundColor: '#EC769A',
-    // paddingTop: 10,
     padding: 30,
     shadowColor: '#000',
     shadowOffset: {
@@ -19,7 +18,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    // elevation: 5,
   },
   title: {
     fontSize: 24,
@@ -71,15 +69,19 @@ const styles = StyleSheet.create({
     margin: 50,
   },
   modalContent: {
-    fontSize: 14,
+    fontSize: 18,
     fontWeight: '500',
     lineHeight: 26,
     color: '#F4F4DD',
-  },
-  scrollView: {
-    // marginHorizontal: 20,
+    paddingBottom: 20,
   },
   spinnerTextStyle: {
+    color: '#F4F4DD',
+  },
+  error: {
+    fontSize: 16,
+    fontWeight: '500',
+    lineHeight: 26,
     color: '#F4F4DD',
   },
 });
