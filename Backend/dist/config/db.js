@@ -8,10 +8,7 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const url = 'mongodb+srv://binahovav:Gilad2022@cluster0.2e6czzb.mongodb.net/validate_db';
 const connectDB = async () => {
     try {
-        await mongoose_1.default.connect(url, {
-        // useNewUrlParser: true,
-        // useUnifiedTopology: true,
-        });
+        await mongoose_1.default.connect(url, {});
         console.log('Connected to MongoDB');
     }
     catch (error) {

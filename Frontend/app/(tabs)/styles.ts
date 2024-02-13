@@ -1,46 +1,54 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
+    paddingHorizontal: 10,
     backgroundColor: '#EC769A',
+    paddingTop: 30,
+  },
+  form: {
+    backgroundColor: '#EC769A',
+    // paddingTop: 10,
+    padding: 30,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    // elevation: 5,
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     color: '#F4F4DD',
+    textAlign: 'center',
+    marginBottom: 10,
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-  placeholder: {
-    color: '#F4F4DD',
-    fontSize: 20,
-  },
-  smallPlaceholder: {
-    fontSize: 14,
-    color: '#F4F4DD',
+  label: {
+    fontSize: 16,
+    marginTop: 10,
+    marginBottom: 5,
+    fontWeight: 'bold',
+    color: '#535454',
   },
   nameInput: {
-    margin: 15,
-    marginBottom: 40,
+    paddingLeft: 10,
     borderColor: 'black',
     borderWidth: 1,
-    // width: '70%',
     height: 40,
     borderRadius: 10,
     backgroundColor: '#F4F4DD',
   },
   bioInput: {
-    margin: 15,
+    paddingLeft: 10,
     borderColor: 'black',
     borderWidth: 1,
-    // width: '70%',
-    height: 120,
+    marginBottom: 20,
+    height: 100,
     borderRadius: 10,
     backgroundColor: '#F4F4DD',
   },
@@ -48,15 +56,32 @@ const styles = StyleSheet.create({
     width: 180,
     height: 70,
     position: 'absolute',
-    top: 10,
-    left: 10,
+    top: -40,
+    // left: 10,
   },
-  button: {
-    backgroundColor: '#F4F4DD',
-    width: 50,
-    borderRadius: 20,
-    alignItems: 'center',
+  modalContainer: {
+    backgroundColor: '#EC769A',
+    borderRadius: 10,
+    width: '85%',
+    flex: 1,
+    justifyContent: 'flex-start',
+    paddingTop: 30,
+    alignSelf: 'center',
+    paddingHorizontal: 20,
+    margin: 50,
   },
-})
+  modalContent: {
+    fontSize: 14,
+    fontWeight: '500',
+    lineHeight: 26,
+    color: '#F4F4DD',
+  },
+  scrollView: {
+    // marginHorizontal: 20,
+  },
+  spinnerTextStyle: {
+    color: '#F4F4DD',
+  },
+});
 
-export default styles
+export default styles;

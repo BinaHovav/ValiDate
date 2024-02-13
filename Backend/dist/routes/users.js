@@ -17,7 +17,6 @@ router.post('/add-user', async (req, res) => {
             bio: req.body.bio,
         });
         await newUser.save();
-        // const idealProfile = generateIdealPartner(newUser.bio)
         const idealProfile = await (0, ai_util_1.generateIdealPartner)(newUser.bio);
         await (0, matching_util_1.checkMatch)(newUser.bio);
         const matchedPartners = await (0, matching_util_1.checkFor50PercentMatch)(newUser.bio);

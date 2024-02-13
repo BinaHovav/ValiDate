@@ -27,6 +27,7 @@ exports.User = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
 const userSchema = new mongoose_1.Schema({
     email: { type: String, required: true },
+    // bio: { type: String, required: true, minlength: 40 },
     bio: { type: String, required: true },
 });
 const User = mongoose_1.default.model('User', userSchema);

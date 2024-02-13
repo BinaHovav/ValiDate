@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getUsersFromDatabase = exports.checkFor50PercentMatch = exports.checkMatch = void 0;
+exports.checkFor50PercentMatch = exports.checkMatch = void 0;
 const natural_1 = __importDefault(require("natural"));
 const user_1 = require("../models/user");
 // Create a TF-IDF vectorizer
@@ -13,7 +13,6 @@ const getUsersFromDatabase = async () => {
     const users = await user_1.User.find();
     return users.map((user) => ({ email: user.email, bio: user.bio }));
 };
-exports.getUsersFromDatabase = getUsersFromDatabase;
 // Add documents to the TF-IDF vectorizer
 const checkMatch = async (newUserBio) => {
     const databaseBios = await getUsersFromDatabase();

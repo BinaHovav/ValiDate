@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.generateIdealPartner = void 0;
 const openai_1 = require("openai");
 const openai = new openai_1.OpenAI({
-    apiKey: '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',
+    apiKey: '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',
     dangerouslyAllowBrowser: true,
 });
 async function generateIdealPartner(bio) {
@@ -16,7 +16,7 @@ async function generateIdealPartner(bio) {
                 {
                     role: 'assistant',
                     content: `According to the bio provided, please write a brief description of an ideal match in 2-3 sentences.
-                    Also,  using short titles, list 3 or 4 places where the user might find a match
+                    Also, using short titles, list 3 or 4 places where the user might find a match
                     (e.g., Local Library, Beach, etc.)`,
                 },
             ],
