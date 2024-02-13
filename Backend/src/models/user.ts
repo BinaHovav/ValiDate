@@ -8,8 +8,7 @@ interface User extends Document {
 
 const userSchema = new Schema<User>({
   email: { type: String, required: true },
-  // bio: { type: String, required: true, minlength: 40 },
-  bio: { type: String, required: true },
+  bio: { type: String, required: true, minlength: 40 },
 });
 
 const User = mongoose.model<User>('User', userSchema);
