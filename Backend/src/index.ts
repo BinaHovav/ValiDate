@@ -14,5 +14,5 @@ app.use('/users', userRouter);
 connectDB();
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://192.168.33.2:${PORT}`);
+  console.log(`Server is running on http:/localhost:${PORT}`);
 });
